@@ -11,7 +11,7 @@ STOCK_API_KEY = "K11SJ0TEQSVHIK5P"
 # STEP 1: Use https://www.alphavantage.co/documentation/#daily
 # When stock price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
 
-# Get yesterday's closing stock price. Hint: You can perform list comprehensions on Python dictionaries. e.g. [new_value for (key, value) in dictionary.items()]
+# Get yesterday's closing stock price.
 stock_params = {
     "function": "TIME_SERIES_DAILY",
     "symbol": STOCK_NAME,
@@ -31,7 +31,9 @@ day_before_yesterday_data = data_list[1]
 day_before_yesterday_close = day_before_yesterday_data["4. close"]
 print(day_before_yesterday_close)
 
-#TODO 3. - Find the positive difference between 1 and 2. e.g. 40 - 20 = -20, but the positive difference is 20. Hint: https://www.w3schools.com/python/ref_func_abs.asp
+# Find the positive difference between 1 and 2. e.g. 40 - 20 = -20, but the positive difference is 20.
+difference = abs(float(yesterday_closing) - float(day_before_yesterday_close))
+print(difference)
 
 #TODO 4. - Work out the percentage difference in price between closing price yesterday and closing price the day before yesterday.
 
