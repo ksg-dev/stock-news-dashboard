@@ -55,23 +55,23 @@ if diff_percent > 5:
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME.
 
 # Use Python slice operator to create a list that contains the first 3 articles.
-three_articles = articles[:3]
+    three_articles = articles[:3]
 
 
 # STEP 3: Use twilio.com/docs/sms/quickstart/python
 # to send a separate message with each article's title and description to your phone number.
 
 # Create a new list of the first 3 article's headline and description using list comprehension.
-formatted_articles = [f"Headline: {article['title']}. \nBrief: {article['description']}" for article in three_articles]
+    formatted_articles = [f"Headline: {article['title']}. \nBrief: {article['description']}" for article in three_articles]
 
 # Send each article as a separate message via Twilio.
-client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+    client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
-for article in formatted_articles:
-    message = client.messages.create(
-        body=article,
-        from_="whatsapp:+14155238886",
-        to="whatsapp:+13344078777"
-    )
-    print(message.status)
+    for article in formatted_articles:
+        message = client.messages.create(
+            body=article,
+            from_="whatsapp:+14155238886",
+            to="whatsapp:+13344078777"
+        )
+        print(message.status)
 
