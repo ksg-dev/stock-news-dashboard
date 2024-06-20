@@ -1,3 +1,1 @@
-unable to complete due to api limits imposed since course creation
-
-using stock api to create stock news dashboard
+using alpha advantage stock api to check closing stock prices, and if difference greater than 5%, use News API to get top 3 articles re: company, and send via whatsapp using Twilio API
