@@ -1,17 +1,24 @@
 import requests
 from twilio.rest import Client
+from dotenv import load_dotenv
+import os
 
-STOCK_NAME = "TSLA"
-COMPANY_NAME = "Tesla Inc"
+load_dotenv()
 
-STOCK_ENDPOINT = "https://www.alphavantage.co/query"
-NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
+STOCK_NAME = os.environ["STOCK_NAME"]
+COMPANY_NAME = os.environ["COMPANY_NAME"]
 
-# STOCK_API_KEY = ""
-# NEWS_API_KEY = ""
+STOCK_ENDPOINT = os.environ["STOCK_ENDPOINT"]
+NEWS_ENDPOINT = os.environ["NEWS_ENDPOINT"]
 
-# TWILIO_ACCOUNT_SID = ""
-# TWILIO_AUTH_TOKEN = ""
+STOCK_API_KEY = os.environ["STOCK_API_KEY"]
+NEWS_API_KEY = os.environ["NEWS_API_KEY"]
+
+TWILIO_ACCOUNT_SID = os.environ["TWILIO_ACCOUNT_SID"]
+TWILIO_AUTH_TOKEN = os.environ["TWILIO_AUTH_TOKEN"]
+
+FR_WHATSAPP = os.environ["FR_WHATSAPP"]
+TO_WHATSAPP = os.environ["TO_WHATSAPP"]
 
 # STEP 1: Use https://www.alphavantage.co/documentation/#daily
 # When stock price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
@@ -70,8 +77,8 @@ if diff_percent > 5:
     for article in formatted_articles:
         message = client.messages.create(
             body=article,
-            from_="whatsapp:+{number}",
-            to="whatsapp:+{number}"
+            from_=FR_WHATSAPP,
+            to=TO_WHATSAPP
         )
         print(message.status)
 
